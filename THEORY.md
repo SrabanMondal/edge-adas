@@ -1,4 +1,4 @@
-# Theory Documentation: Autonomy Server ADAS Pipeline
+# Theory Documentation: EDGE ADAS Pipeline
 
 This document explains how the ADAS backend works at a conceptual and systems level, based on the source code as the primary reference.
 
@@ -408,18 +408,6 @@ TODO.
 | Camera API CPU | TODO | OpenVINO | TODO | TODO | TODO | TODO | TODO |
 | Inference only | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
 | End-to-end + API | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
-
-### Suggested measurement points
-
-- Per-stage timing:
-  - preprocess
-  - road inference
-  - object inference
-  - road perception
-  - control
-- End-to-end frame latency
-- Effective control update rate after frame skipping
-- SSE publish stability under load
 
 ## 7. System Design Insights
 

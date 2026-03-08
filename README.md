@@ -1,8 +1,57 @@
-# Autonomy Server - ADAS Pipeline
+# EDGE ADAS Pipeline
 
 Real-time monocular ADAS backend for lane keeping and collision avoidance, using a single camera stream to produce steering and braking commands.
 
 For a detailed explanation of the system architecture, algorithms, and design decisions, see [THEORY.md](THEORY.md).
+
+---
+
+## 0. Architecture Overview
+
+The system follows a structured perception → planning → control pipeline.
+
+1. The camera frame (any resolution) is letterboxed to 256×256 for model inference.
+2. Two neural networks run in parallel:
+   - Road segmentation
+   - Object detection
+3. Outputs are mapped back to the original image space.
+4. The road mask is processed to extract a centerline.
+5. An MPC planner evaluates candidate trajectories using:
+   - road mask
+   - centerline
+   - GPS bias
+6. The lowest-cost trajectory determines steering.
+7. Object detections influence braking decisions.
+8. Control outputs and system telemetry are streamed to a web dashboard.
+
+```mermaid
+flowchart LR
+
+subgraph Geometry
+A[Camera Image] --> B[Letterbox 256x256]
+end
+
+subgraph Perception
+B --> C[Road Segmentation]
+B --> D[Object Detection]
+end
+
+subgraph Planning
+C --> E[Centerline Extraction]
+E --> F[MPC Trajectory Scoring]
+end
+
+subgraph Control
+F --> G[Steering Output]
+D --> H[Brake Estimation]
+end
+
+subgraph Telemetry
+G --> I[Telemetry API]
+H --> I
+I --> J[Web Dashboard]
+end
+```
 
 ---
 
