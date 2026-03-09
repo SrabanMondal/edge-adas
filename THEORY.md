@@ -396,18 +396,29 @@ TensorRT path generally targets NVIDIA GPU deployment with explicit CUDA memory 
 
 OpenVINO path targets Intel-oriented acceleration and graph-integrated preprocessing through OpenVINO PPP.
 
-## 6. Performance and Benchmark Placeholder
+## 6. Benchmark Results
 
-TODO.
+> **Test Hardware**
 
-### Benchmark matrix template
+- CPU: Intel Core i5 (2.4 GHz)
+- GPU: Intel Iris Xe Graphics
+- Edge Device: Jetson Nano
 
-| Mode | Hardware | Backend | Input Resolution | FPS | Mean Latency (ms) | P95 Latency (ms) | Notes |
-|------|----------|---------|------------------|-----|-------------------|------------------|-------|
-| Camera API GPU | TODO | TensorRT | TODO | TODO | TODO | TODO | TODO |
-| Camera API CPU | TODO | OpenVINO | TODO | TODO | TODO | TODO | TODO |
-| Inference only | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
-| End-to-end + API | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+### Average Processing Time per Frame
+
+| Device / Hardware | Preprocess (ms) | Inference (ms) | Postprocess (ms) | Write (ms) | Total (ms) | FPS |
+|-------------------|-----------------|----------------|------------------|------------|------------|-----|
+| Intel Iris Xe GPU (i5 2.4 GHz) | 10.01 | 22.80 | 8.22 | 0.00 | **41.03** | **24.37** |
+| Intel Core i5 CPU Only (2.4 GHz) | 5.39 | 84.65 | 4.38 | 0.00 | **94.42** | **10.59** |
+| Jetson Nano | 14.26 | 94.79 | 19.79 | 0.00 | **128.85** | **7.76** |
+
+### Performance Comparison
+
+| Hardware | FPS | Relative Speed |
+|----------|-----|---------------|
+| Intel Iris Xe GPU | 24.37 | **2.3× faster than CPU** |
+| Intel CPU Only | 10.59 | Baseline |
+| Jetson Nano | 7.76 | 0.73× CPU |
 
 ## 7. System Design Insights
 

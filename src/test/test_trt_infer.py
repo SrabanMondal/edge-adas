@@ -137,7 +137,7 @@ def main(demo: bool, morph: bool):
                 center_points = center_pts,
                 gps_bias = 0
             )
-        print("Steer: ",steer," Brake: ",brake)
+        # print("Steer: ",steer," Brake: ",brake)
         if demo and overlay is not None:
             overlay.fill(0)
                 

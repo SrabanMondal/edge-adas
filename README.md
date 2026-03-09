@@ -707,7 +707,7 @@ Backend:
 
 Performance:
 
-- **28–30 FPS**
+- **24–26 FPS**
 - **No frame skipping**
 - Real-time processing with full pipeline enabled.
 
@@ -730,7 +730,7 @@ Software environment:
 
 Performance:
 
-- **25–28 FPS effective throughput**
+- **23–25 FPS effective throughput**
 - **Every 3rd frame processed**
 
 Frame skipping is used on the Nano to maintain stable real-time performance under limited GPU resources.
