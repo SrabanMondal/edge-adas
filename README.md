@@ -135,8 +135,7 @@ TensorRT engines can run in either **FP16** or **FP32** precision.
 | **FP32** | Use if FP16 causes issues or is unsupported |
 
 ⚠️ **Jetson Nano users:**  
-In testing, **FP16 engines did not work reliably**, but **FP32 worked correctly**.  
-If you are using Jetson Nano, convert using **FP32**.
+In testing, **FP16 engines will not give high performance advantage due to its gpu architecture**.
 
 ---
 
@@ -152,7 +151,7 @@ trtexec --onnx=src/weights/yolopv2.onnx \
         --fp16
 ```
 
-> FP32 (fallback / Jetson Nano)
+> FP32 (fallback)
 
 ```bash
 trtexec --onnx=src/weights/yolopv2.onnx \
@@ -219,7 +218,7 @@ src/weights/
     └── yolo.engine
 ```
 
-⚠️ **Keep these filenames unchanged** — the application expects these exact paths.
+**Keep these filenames unchanged** — the application expects these exact paths. Unless you want to change filename paths in the code.
 
 ---
 
@@ -286,6 +285,7 @@ src/weights/
 >
 > - `src/camera_api.py`
 > - `src/camera_api_cpu.py`
+> - other test files
 
 ---
 
