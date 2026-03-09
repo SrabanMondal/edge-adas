@@ -15,7 +15,7 @@ from src.adas.perception.object.object_brake import ObjectPerception
 INPUT_VIDEO = "src/data/input.mp4"
 OUTPUT_VIDEO = "src/data/output_debug.mp4"
 YOLOP_MODEL_PATH = "src/weights/yolop/ov/yolop.xml"
-YOLO_MODEL_PATH = "src/weights/yolo/ov/yolo26.xml"
+YOLO_MODEL_PATH = "src/weights/yolo/ov/yolo26n.xml"
 DEVICE = "CPU"
 IMG_SIZE = 256
 

@@ -7,7 +7,7 @@ from openvino import Type, Layout
 from src.utils.nms import decode_if_needed
 
 class ObjectInferenceEngine:
-    def __init__(self, yolo26_path, device="GPU"):
+    def __init__(self, yolo26_path, device="CPU"):
         self.core = ov.Core()
         
         # 1. Read the INT8 Model

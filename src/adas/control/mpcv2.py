@@ -191,7 +191,7 @@ class CenterlineMPC:
         cost = 0.0
         for x, y in zip(traj_x, traj_y):
             idx = np.argmin(np.abs(cl_y - y))
-            pixel_error += abs(cl_x[idx] - x)
+            pixel_error = abs(cl_x[idx] - x)
             cost += (pixel_error / self.frame_width)
 
         return cost / len(traj)

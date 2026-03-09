@@ -19,7 +19,7 @@ def letterbox(img, size=256) -> np.ndarray:
     )
     return boxed
 
-def unletterbox(mask_320, orig_shape, size=256) -> np.ndarray:
+def unletterbox(mask_256, orig_shape, size=256) -> np.ndarray:
     orig_h, orig_w = orig_shape
 
     # 1. Re-calculate scale exactly as done in letterbox
@@ -37,7 +37,7 @@ def unletterbox(mask_320, orig_shape, size=256) -> np.ndarray:
     bottom = min(top + nh, size)
     right = min(left + nw, size)
     
-    unpadded = mask_320[top:bottom, left:right]
+    unpadded = mask_256[top:bottom, left:right]
 
     if unpadded.size == 0:
         print(f"[WARN] Empty crop: top={top}, bottom={bottom}, left={left}, right={right}")
