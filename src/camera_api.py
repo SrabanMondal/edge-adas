@@ -5,6 +5,7 @@ import os
 import threading
 import json
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import StreamingResponse
 import uvicorn
@@ -137,6 +138,15 @@ def inference_loop():
     ctx.pop()
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "*",  # your Jetson Nano frontend
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.on_event("startup")
 def start_background_thread():
